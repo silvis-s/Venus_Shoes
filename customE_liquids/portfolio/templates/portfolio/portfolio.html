@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+{% load cart_tags %}
+
+{% block title %}
+    Portafolio
+{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/Pink.jpg' %}{% endblock %}
+
+{% block headers %}
+    <h1>Productos</h1>
+    <span class="subheading"></span>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="mt-5 pt-3" style="float: right;">
+            {% include "cart/widget.html" %}
+        </div>
+        <div class="row project">
+            {% for product in  products %}
+                {% if product.image %}
+                    <div class="col-md-3 mt-4 w-75">
+                        <div class="card">
+                            <div style="height: 200px; width: 100%; object-fit: contain;">
+                                <img style="
+                                        height: 100%;
+                                        object-fit: cover;
+                                        object-position: center center;
+                                        background-image: url('{% load static %}{% static 'core/img/tienda/ref1.jpg' %}')"
+                                     class="card-img-top" alt="">
+                            </div>
+
+                            <div class="card-body" style="text-align: center">
+                                <h5 class="card-title">{{ product.title }}</h5>
+                                <p class="card-text text-sm-left">{{ product.content }}</p>
+                                <p class="card-text">{{ product.price }} $</p>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="{% url 'cart:add' product.id %}"
+                                   class="w-100 text-md px-2 py-2 rounded-lg font-archivo btn-login bg-purple-secondary">
+                                    Agregar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
+

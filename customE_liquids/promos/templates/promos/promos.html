@@ -1,0 +1,60 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}
+    Promociones
+{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/aniversario-ofertas.jpg' %}{% endblock %}
+
+{% block headers %}
+    <h1>Ofertas</h1>
+    <span class="subheading"></span>
+{% endblock %}
+
+{% block content %}
+    {% for post in  posts %}
+        {% if post.image.url %}
+            <section class="page-section cta">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 mx-auto">
+                            <div class="cta-innerv text-center rounded">
+                                <h2 class="section-heading mb-5">
+                                    <span class="section-heading-upper">{{ post.published|date:"SHORT_DATE_FORMAT" }}</span>
+                                    <br>
+                                    <span class="section-heading-lower">{{ post.title }}</span>
+                                </h2>
+                                <p class="mb-0">
+                                    <img
+                                            style="
+                                        height: 500px;
+                                        object-fit: cover;
+                                        object-position: center center;
+                                        background-image: url('{% load static %}{% static 'core/img/Princess.jpg' %}')"
+
+
+                                            class="mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
+                                         src="{{ post.image.url }}" alt="">
+                                </p>
+                                <p class="text-justify">
+                                    {{ post.content|linebreaks }}
+                                </p>
+                                <p class="mb-0 mbt">
+                <span class="section-heading-under">Publicado por <em><b>{{ post.author }}</b></em> en
+                    {% for category in post.categories.all %}
+                        {{ category.name }}{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                </span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+    {% endfor %}
+
+
+{% endblock %}

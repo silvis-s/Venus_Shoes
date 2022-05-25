@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Registro
+{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/blue-light.jpg' %}{% endblock %}
+
+{% block headers %}
+    <h1>Registro</h1>
+    {# <span class="subheading">Conoce nuestra historia</span> #}
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <card class="border-2 rounded-lg mx-auto w-50 p-4 ">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="font-poppins btn-login w-50 border-0 h-20 bg-pink-principal rounded right-50 ">
+                Crear cuenta
+            </button>
+        </form>
+    </card>
+{% endblock %}

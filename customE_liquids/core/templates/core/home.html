@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/Home.jpg' %}{% endblock %}
+
+{% block headers %}
+    <h1>Venus</h1>
+    <span class="subheading">SHOES</span>
+{% endblock %}
+
+{% block content %}
+    <div class="col-lg-3 offset-lg-1">
+      <img class="img-fluid avatar" src="{% load static %}{% static 'core/img/LogoCircular.svg' %}" sizes="100" alt="">
+    </div>
+
+    <div class="col-lg-7 col-md-8">
+      <h2 class="section-heading font-archivo"></h2>
+      <p>Creada en ... lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit...</p>
+    </div>
+{% endblock %}
+
+
